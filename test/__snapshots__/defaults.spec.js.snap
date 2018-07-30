@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`defaults should add defaults 1`] = `
+Array [
+  "/",
+  Object {
+    "credentials": "include",
+    "headers": Object {},
+  },
+]
+`;
+
+exports[`defaults should add defaults and headers 1`] = `
+Array [
+  "/",
+  Object {
+    "credentials": "include",
+    "headers": Object {
+      "content-type": "text/plain",
+      "x-version": "1.0",
+    },
+  },
+]
+`;
+
+exports[`defaults should add defaults and headers 2`] = `
+Array [
+  "/",
+  Object {
+    "credentials": "omit",
+    "headers": Object {
+      "content-type": "text/json",
+    },
+  },
+]
+`;

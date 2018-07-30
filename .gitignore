@@ -1,0 +1,10 @@
+# Directories
+/node_modules
+/coverage
+/es
+/lib
+/tmp
+
+# Files
+*.log
+.DS_Store

@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`headers should add headers 1`] = `
+Array [
+  "/",
+  Object {
+    "headers": Object {
+      "x-version": "1.0",
+    },
+  },
+]
+`;
+
+exports[`headers should add headers 2`] = `
+Array [
+  "/",
+  Object {
+    "headers": Object {
+      "x-version": "1.1",
+    },
+  },
+]
+`;

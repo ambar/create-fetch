@@ -1,0 +1,64 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`createFetch should create fetch with middlewares 1`] = `
+Array [
+  "/api",
+  Object {
+    "body": undefined,
+    "headers": Object {},
+  },
+]
+`;
+
+exports[`createFetch should create fetch with middlewares 2`] = `
+Array [
+  "/api?filter=name",
+  Object {
+    "body": undefined,
+    "headers": Object {},
+  },
+]
+`;
+
+exports[`createFetch should create fetch with middlewares 3`] = `
+Array [
+  "/api",
+  Object {
+    "body": "{\\"name\\":\\"JoJo\\"}",
+    "headers": Object {
+      "content-type": "application/json",
+    },
+    "method": "POST",
+  },
+]
+`;
+
+exports[`createFetch should create fetch with middlewares 4`] = `
+Array [
+  "/api?filter=name",
+  Object {
+    "body": "name=JoJo",
+    "headers": Object {
+      "content-type": "application/x-www-form-urlencoded",
+    },
+    "method": "POST",
+  },
+]
+`;
+
+exports[`createFetch should create fetch without middlewares 1`] = `
+Array [
+  "/api",
+]
+`;
+
+exports[`createFetch should create fetch without middlewares 2`] = `
+Array [
+  "/api",
+  Object {
+    "headers": Object {
+      "x-versoin": 1,
+    },
+  },
+]
+`;
