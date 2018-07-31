@@ -11,8 +11,8 @@
     "src"
   ],
   "scripts": {
-    "build:cjs": "rm -rf ./lib && NODE_ENV=production babel src --out-dir lib --ignore '**/*.spec.js'",
-    "build:es": "rm -rf ./es && NODE_ENV=production BABEL_ENV=es babel src --out-dir es --ignore '**/*.spec.js'",
+    "build:cjs": "rm -rf ./lib && NODE_ENV=production babel src --out-dir lib",
+    "build:es": "rm -rf ./es && NODE_ENV=production BABEL_ENV=es babel src --out-dir es",
     "build": "npm run build:cjs && npm run build:es",
     "test": "jest",
     "test:coverage": "jest --coverage",
