@@ -41,12 +41,12 @@ myFetch('/api', {
 
 ## API
 
-- [`defaults(options)`](<#defaults(options)>)
-- [`headers(options)`](<#headers(options)>)
-- [`query()`](<#query()>)
-- [`bodyStringifier()`](<#bodyStringifier()>)
+- [`defaults(options)`](#defaults)
+- [`headers(options)`](#headers)
+- [`query()`](#query)
+- [`bodyStringifier()`](#bodyStringifier)
 
-### `defaults(options)`
+### <a name='defaults'></a>`defaults(options)`
 
 Add default request options.
 
@@ -57,7 +57,7 @@ const myFetch = defaults({credentials: 'same-origin'})(fetch)
 myFetch('/')
 ```
 
-### `headers(options)`
+### <a name='headers'></a>`headers(options)`
 
 Add default request headers.
 
@@ -72,7 +72,7 @@ myFetch('/')
 //   x-requested-with: fetch
 ```
 
-### `query()`
+### <a name='query'></a>`query()`
 
 Stringify query string.
 
@@ -87,7 +87,7 @@ myFetch('/', {
 // GET /?filter=user
 ```
 
-### `bodyStringifier()`
+### <a name='bodyStringifier'></a>`bodyStringifier()`
 
 Stringify request body.
 
