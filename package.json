@@ -2,6 +2,7 @@
   "name": "create-fetch",
   "version": "1.0.0",
   "description": "Utilities for fetch",
+  "repository": "ambar/create-fetch",
   "sideEffects": false,
   "main": "lib/index.js",
   "module": "es/index.js",
@@ -9,6 +10,12 @@
     "es",
     "lib",
     "src"
+  ],
+  "keywords": [
+    "fetch",
+    "http",
+    "compose",
+    "middleware"
   ],
   "scripts": {
     "build:cjs": "rm -rf ./lib && NODE_ENV=production babel src --out-dir lib",
