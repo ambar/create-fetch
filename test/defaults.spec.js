@@ -27,4 +27,9 @@ describe('defaults', () => {
       })
     ).toMatchSnapshot()
   })
+
+  it('should work without options', async () => {
+    const myFetch = defaults()(fetch)
+    expect(await myFetch('/')).toMatchSnapshot()
+  })
 })

@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`xsrf should add xsrf header when using POST/PATCH/POST/PUT 1`] = `
+Object {
+  "x-xsrftoken": "uuid|foo.bar",
+}
+`;
+
+exports[`xsrf should add xsrf header with custom cookie name 1`] = `
+Array [
+  "/",
+  Object {
+    "headers": Object {
+      "x-xsrftoken": "uuid",
+    },
+    "method": "POST",
+  },
+]
+`;
+
+exports[`xsrf should add xsrf header with custom header name 1`] = `
+Array [
+  "/",
+  Object {
+    "headers": Object {
+      "x-xsrf-token": "uuid|foo.bar",
+    },
+    "method": "POST",
+  },
+]
+`;
+
+exports[`xsrf should not add xsrf header when using GET/HEAD/OPTIONS 1`] = `Object {}`;
+
+exports[`xsrf should not match cookie 1`] = `
+Array [
+  "/",
+  Object {
+    "headers": Object {},
+    "method": "POST",
+  },
+]
+`;
+
+exports[`xsrf should work without options 1`] = `
+Array [
+  "/",
+  Object {
+    "headers": Object {},
+  },
+]
+`;

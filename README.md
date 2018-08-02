@@ -22,6 +22,7 @@ const myFetch = createFetch(fetch, [
 
 // same as:
 // const myFetch = compose(query(), ...)(fetch)
+
 // could also use pipeline operator:
 // const myFetch = fetch |> query() |> ...
 
@@ -45,6 +46,7 @@ myFetch('/api', {
 - [`headers(options)`](#headers)
 - [`query()`](#query)
 - [`bodyStringifier()`](#bodyStringifier)
+- [`xsrf()`](#xsrf)
 
 ### <a name='defaults'></a>`defaults(options)`
 
@@ -53,7 +55,9 @@ Add default request options.
 ```js
 import {defaults} from 'create-fetch'
 
-const myFetch = defaults({credentials: 'same-origin'})(fetch)
+const myFetch = defaults({
+  credentials: 'same-origin',
+})(fetch)
 myFetch('/')
 ```
 
@@ -64,7 +68,10 @@ Add default request headers.
 ```js
 import {headers} from 'create-fetch'
 
-const myFetch = headers({'x-requested-with': 'fetch'})(fetch)
+const myFetch = headers({
+  'x-requested-with': 'fetch',
+})(fetch)
+
 myFetch('/')
 // =>
 // GET /
@@ -80,6 +87,7 @@ Stringify query string.
 import {query} from 'create-fetch'
 
 const myFetch = query()(fetch)
+
 myFetch('/', {
   query: {filter: 'user'},
 })
@@ -120,4 +128,25 @@ myFetch('/', {
 //   content-type: application/x-www-form-urlencoded
 // Request Payload:
 //   name=JoJo
+```
+
+### <a name='xsrf'></a>`xsrf()`
+
+Add XSRF token header.
+
+```js
+import {xsrf} from 'create-fetch'
+
+const myFetch = xsrf({
+  cookieName, // defaults to `_xsrf`
+  headerName, // defaults to `x-xsrftoken`
+})(fetch)
+
+myFetch('/', {
+  method: 'POST',
+})
+// =>
+// POST /
+// Request Headers:
+//   x-xsrftoken: <xsrf-token>
 ```

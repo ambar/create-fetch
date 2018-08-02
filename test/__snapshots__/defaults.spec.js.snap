@@ -34,3 +34,12 @@ Array [
   },
 ]
 `;
+
+exports[`defaults should work without options 1`] = `
+Array [
+  "/",
+  Object {
+    "headers": Object {},
+  },
+]
+`;
