@@ -20,7 +20,7 @@
     "prepare": "npm run test && npm run build"
   },
   "jest": {
-    "testEnvironment": "node"
+    "testURL": "http://localhost"
   },
   "devDependencies": {
     "@babel/cli": "^7.0.0-beta.54",

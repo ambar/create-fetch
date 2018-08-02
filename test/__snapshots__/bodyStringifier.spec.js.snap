@@ -28,7 +28,12 @@ exports[`bodyStringifier should not stringify with non-plain-object or non-array
 Array [
   "/api",
   Object {
-    "body": Map {},
+    "body": FormData {
+      Symbol(impl): FormDataImpl {
+        "_entries": Array [],
+        Symbol(wrapper): [Circular],
+      },
+    },
     "headers": Object {},
   },
 ]
@@ -38,13 +43,23 @@ exports[`bodyStringifier should not stringify with non-plain-object or non-array
 Array [
   "/api",
   Object {
-    "body": true,
+    "body": Map {},
     "headers": Object {},
   },
 ]
 `;
 
 exports[`bodyStringifier should not stringify with non-plain-object or non-array 4`] = `
+Array [
+  "/api",
+  Object {
+    "body": true,
+    "headers": Object {},
+  },
+]
+`;
+
+exports[`bodyStringifier should not stringify with non-plain-object or non-array 5`] = `
 Array [
   "/api",
   Object {

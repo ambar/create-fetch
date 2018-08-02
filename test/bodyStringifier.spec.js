@@ -25,8 +25,7 @@ describe('bodyStringifier', () => {
   it('should not stringify with non-plain-object or non-array', async () => {
     const myFetch = bodyStringifier()(fetch)
     expect(await myFetch('/api', {body: new class Foo {}()})).toMatchSnapshot()
-    // https://github.com/jsdom/jsdom/issues/2304
-    // expect(await myFetch('/api', {body: new FormData()})).toMatchSnapshot()
+    expect(await myFetch('/api', {body: new FormData()})).toMatchSnapshot()
     expect(await myFetch('/api', {body: new Map()})).toMatchSnapshot()
     expect(await myFetch('/api', {body: true})).toMatchSnapshot()
     expect(await myFetch('/api', {body: null})).toMatchSnapshot()
