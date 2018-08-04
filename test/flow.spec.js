@@ -24,6 +24,12 @@ describe('flow', () => {
     seq.length = 0
   })
 
+  test('simple wrap', async () => {
+    const myFetch = dummy('b')(dummy('a')(fetch))
+    await myFetch('/api')
+    expect(seq.join(' > ')).toBe('b0 > a0 > a1 > b1 > b2 > a2 > a3 > b3')
+  })
+
   test('pipeline operator', async () => {
     const myFetch = fetch |> dummy('a') |> dummy('b')
     await myFetch('/api')

@@ -1,6 +1,6 @@
 # create-fetch
 
-Utilities for [fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API).
+Utilities for custom [fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API).
 
 ## Install
 
@@ -46,7 +46,7 @@ myFetch('/api', {
 - [`headers(options)`](#headers)
 - [`query()`](#query)
 - [`bodyStringifier()`](#bodyStringifier)
-- [`xsrf()`](#xsrf)
+- [`xsrf(options)`](#xsrf)
 
 ### <a name='defaults'></a>`defaults(options)`
 
@@ -130,7 +130,7 @@ myFetch('/', {
 //   name=JoJo
 ```
 
-### <a name='xsrf'></a>`xsrf()`
+### <a name='xsrf'></a>`xsrf(options)`
 
 Add XSRF token header.
 
