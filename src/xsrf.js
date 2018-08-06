@@ -11,9 +11,9 @@ const xsrf = ({
 } = {}) => fetch => (url, options = {}) => {
   let itsHeaders
   if (
+    typeof document !== 'undefined' &&
     options.method &&
-    xsrfMethods.indexOf(options.method.toUpperCase()) !== -1 &&
-    typeof window !== 'undefined'
+    xsrfMethods.indexOf(options.method.toUpperCase()) !== -1
   ) {
     const xsrfToken = getCookie(cookieName)
     if (xsrfToken) {
