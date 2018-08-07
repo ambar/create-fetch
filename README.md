@@ -43,6 +43,7 @@ myFetch('/api', {
 ## API
 
 - [`defaults(options)`](#defaults)
+- [`baseUrl(url)`](#baseUrl)
 - [`headers(options)`](#headers)
 - [`query()`](#query)
 - [`bodyStringifier()`](#bodyStringifier)
@@ -59,6 +60,19 @@ const myFetch = defaults({
   credentials: 'same-origin',
 })(fetch)
 myFetch('/')
+```
+
+### <a name='baseUrl'></a>`baseUrl(url)`
+
+Add request base url.
+
+```js
+import {baseUrl} from 'create-fetch'
+
+const ghApi = baseUrl('https://api.github.com')(fetch)
+ghApi('/users')
+// =>
+// GET https://api.github.com/users
 ```
 
 ### <a name='headers'></a>`headers(options)`
