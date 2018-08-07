@@ -1,6 +1,6 @@
 {
   "name": "create-fetch",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Utilities for custom fetch",
   "repository": "ambar/create-fetch",
   "sideEffects": false,
