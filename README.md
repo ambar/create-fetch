@@ -1,6 +1,6 @@
 # create-fetch
 
-Utilities for custom [fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API).
+Utilities for custom [fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch).
 
 ## Install
 
