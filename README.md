@@ -2,6 +2,9 @@
 
 Utilities for custom [fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch).
 
+[![build status](https://img.shields.io/travis/ambar/create-fetch/master.svg?style=flat-square)](https://travis-ci.org/ambar/create-fetch)
+[![npm version](https://img.shields.io/npm/v/create-fetch.svg?style=flat-square)](https://www.npmjs.com/package/create-fetch)
+
 ## Install
 
 ```console
