@@ -7,6 +7,7 @@
   "sideEffects": false,
   "main": "lib/index.js",
   "module": "es/index.js",
+  "unpkg": "dist/index.js",
   "files": [
     "es",
     "lib",
@@ -19,23 +20,26 @@
     "middleware"
   ],
   "scripts": {
-    "prebuild": "rm -rf lib es",
-    "build:cjs": "NODE_ENV=production BABEL_ENV=cjs babel src --out-dir lib",
-    "build:es": "NODE_ENV=production BABEL_ENV=es babel src --out-dir es",
-    "build": "npm run build:cjs && npm run build:es",
+    "dev": "rollup -c -w",
+    "build": "rollup -c",
+    "prebuild": "rm -rf lib es dist",
     "test": "jest",
     "test:coverage": "jest --coverage",
     "test:watch": "jest --watch --notify",
     "prepare": "npm run test && npm run build"
   },
   "devDependencies": {
-    "@babel/cli": "^7.0.0-beta.54",
-    "@babel/core": "^7.0.0-beta.54",
-    "@babel/plugin-proposal-pipeline-operator": "^7.0.0-beta.54",
-    "@babel/preset-env": "^7.0.0-beta.54",
+    "@babel/cli": "^7.2.0",
+    "@babel/core": "^7.2.0",
+    "@babel/plugin-proposal-pipeline-operator": "^7.2.0",
+    "@babel/preset-env": "^7.2.0",
     "babel-core": "^7.0.0-bridge.0",
     "babel-jest": "^23.4.2",
     "jest": "^23.5.0",
+    "rollup": "^0.67.4",
+    "rollup-plugin-babel": "^4.1.0-0",
+    "rollup-plugin-node-builtins": "^2.1.2",
+    "rollup-plugin-terser": "^3.0.0",
     "standard-version": "^4.4.0"
   }
 }

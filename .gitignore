@@ -3,6 +3,7 @@
 /coverage
 /es
 /lib
+/dist
 /tmp
 
 # Files

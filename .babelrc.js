@@ -13,9 +13,6 @@ const create = env => [
 module.exports = {
   presets: create(),
   env: {
-    es: {
-      presets: create({modules: false}),
-    },
     test: {
       presets: create({targets: {node: 'current'}}),
       plugins: [

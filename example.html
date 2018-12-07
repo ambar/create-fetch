@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Demo</title>
+  </head>
+  <body>
+    <pre>
+      npx serve .
+      open http://localhost:5000/example
+    </pre>
+    <pre id="log"></pre>
+    <script type="module">
+      import createFetch, {query, headers} from './dist/index.js'
+
+      const myFetch = createFetch(fetch, [
+        query(),
+        headers({'x-requested-with': 'fetch'}),
+      ])
+      myFetch('/', {query: {foo: 'bar'}}).then(r => {
+        console.info(r)
+        log.textContent = [...r.headers].join('\n')
+      })
+    </script>
+  </body>
+</html>

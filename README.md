@@ -43,6 +43,20 @@ myFetch('/api', {
 //   {"name":"JoJo"}
 ```
 
+Import from [`module`](https://caniuse.com/#search=modules) script (1.4K gzip size):
+
+```html
+<script type="module">
+  import createFetch, {query, headers} from 'https://unpkg.com/create-fetch'
+
+  const myFetch = createFetch(fetch, [
+    query(),
+    headers({'x-requested-with': 'fetch'}),
+  ])
+  myFetch('/example.html', {query: {foo: 'bar'}})
+</script>
+```
+
 ## API
 
 - [`defaults(options)`](#defaults)
