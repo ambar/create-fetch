@@ -3,6 +3,7 @@
   "version": "1.2.0",
   "description": "Utilities for custom fetch",
   "repository": "ambar/create-fetch",
+  "license": "MIT",
   "sideEffects": false,
   "main": "lib/index.js",
   "module": "es/index.js",
