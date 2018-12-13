@@ -2,8 +2,8 @@
 
 Utilities for custom [fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch).
 
-[![build status](https://img.shields.io/travis/ambar/create-fetch/master.svg?style=flat-square)](https://travis-ci.org/ambar/create-fetch)
-[![npm version](https://img.shields.io/npm/v/create-fetch.svg?style=flat-square)](https://www.npmjs.com/package/create-fetch)
+[![build status](https://badgen.net/travis/ambar/create-fetch)](https://travis-ci.org/ambar/create-fetch)
+[![npm version](https://badgen.net/npm/v/create-fetch)](https://www.npmjs.com/package/create-fetch)
 [![minzipped size](https://badgen.net/bundlephobia/minzip/create-fetch)](https://bundlephobia.com/result?p=create-fetch)
 
 ## Install
