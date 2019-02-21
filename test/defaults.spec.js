@@ -32,4 +32,17 @@ describe('defaults', () => {
     const myFetch = defaults()(fetch)
     expect(await myFetch('/')).toMatchSnapshot()
   })
+
+  it('should accept Headers', async () => {
+    const headers = new Headers({a: 1, b: 1})
+    headers.append('a', 2)
+    const myFetch = defaults({headers})(fetch)
+    const result = await myFetch('/api', {headers: {b: 2, c: 1}})
+    expect(result).toEqual(
+      await myFetch('/api', {headers: {a: '1, 2', b: '2', c: '1'}})
+    )
+    expect(result).toEqual(
+      await myFetch('/api', {headers: new Headers({a: '1, 2', b: '2', c: '1'})})
+    )
+  })
 })

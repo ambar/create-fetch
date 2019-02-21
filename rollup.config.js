@@ -1,5 +1,4 @@
 import babel from 'rollup-plugin-babel'
-import builtins from 'rollup-plugin-node-builtins'
 import {terser} from 'rollup-plugin-terser'
 import pkg from './package.json'
 
@@ -9,14 +8,14 @@ export default [
     output: [
       //
       {file: pkg.main, format: 'cjs'},
-      {file: pkg.module, format: 'es'},
+      {file: pkg.module, format: 'esm'},
     ],
     plugins: [babel()],
   },
   // ES build for unpkg CDN
   {
     input: 'src/index.js',
-    output: {file: pkg.unpkg, format: 'es', indent: false},
+    output: {file: pkg.unpkg, format: 'esm', indent: false},
     plugins: [
       babel({
         babelrc: false,
@@ -34,8 +33,6 @@ export default [
           ],
         ],
       }),
-      // shims `querystring`
-      builtins(),
       terser(),
     ],
   },

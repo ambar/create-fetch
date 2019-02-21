@@ -37,7 +37,7 @@ exports[`createFetch should create fetch with middlewares 4`] = `
 Array [
   "/api?filter=name",
   Object {
-    "body": "name=JoJo",
+    "body": URLSearchParams: "name=JoJo",
     "headers": Object {
       "content-type": "application/x-www-form-urlencoded",
     },

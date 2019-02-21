@@ -1,3 +1,6 @@
+import toHeaders from './utils/toHeaders'
+import toObject from './utils/toObject'
+
 const getCookie = key => {
   const [, value] = document.cookie.match(new RegExp(`${key}=([^;]+)`)) || []
   return value
@@ -9,7 +12,7 @@ const xsrf = ({
   cookieName = '_xsrf',
   headerName = 'x-xsrftoken',
 } = {}) => fetch => (url, options = {}) => {
-  let itsHeaders
+  const headers = toHeaders(options.headers)
   if (
     typeof document !== 'undefined' &&
     options.method &&
@@ -17,16 +20,13 @@ const xsrf = ({
   ) {
     const xsrfToken = getCookie(cookieName)
     if (xsrfToken) {
-      itsHeaders = {[headerName]: xsrfToken}
+      headers.set(headerName, xsrfToken)
     }
   }
 
   return fetch(url, {
     ...options,
-    headers: {
-      ...options.headers,
-      ...itsHeaders,
-    },
+    headers: toObject(headers),
   })
 }
 

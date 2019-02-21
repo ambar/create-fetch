@@ -1,6 +1,6 @@
 import createFetch from '../src/createFetch'
 import query from '../src/query'
-import bodyStringifier from '../src/bodyStringifier'
+import bodify from '../src/bodify'
 
 describe('createFetch', () => {
   const fetch = (...args) => Promise.resolve(args)
@@ -12,7 +12,7 @@ describe('createFetch', () => {
   })
 
   it('should create fetch with middlewares', async () => {
-    const presets = [query(), bodyStringifier()]
+    const presets = [query(), bodify()]
     const myFetch = createFetch(fetch, presets)
 
     // default
@@ -28,8 +28,7 @@ describe('createFetch', () => {
       await myFetch('/api', {
         method: 'POST',
         query: {filter: 'name'},
-        body: {name: 'JoJo'},
-        bodyType: 'form',
+        body: new URLSearchParams({name: 'JoJo'}),
       })
     ).toMatchSnapshot()
   })

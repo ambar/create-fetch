@@ -1,20 +1,10 @@
-const create = env => [
-  [
-    '@babel/preset-env',
-    {
-      loose: true,
-      // use native `Object.assign`
-      useBuiltIns: 'entry',
-      ...env,
-    },
-  ],
-]
+const createEnv = targets => [['@babel/preset-env', {targets}]]
 
 module.exports = {
-  presets: create(),
+  presets: createEnv({node: '8.3'}),
   env: {
     test: {
-      presets: create({targets: {node: 'current'}}),
+      presets: createEnv({node: 'current'}),
       plugins: [
         ['@babel/plugin-proposal-pipeline-operator', {proposal: 'minimal'}],
       ],

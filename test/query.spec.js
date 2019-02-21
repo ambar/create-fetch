@@ -8,6 +8,9 @@ describe('query', () => {
     expect(await myFetch('/api', {query: {foo: 1, bar: 2}})).toBe(
       '/api?foo=1&bar=2'
     )
+    expect(
+      await myFetch('/api', {query: new URLSearchParams({foo: 'bar'})})
+    ).toBe('/api?foo=bar')
   })
 
   it('should not add query string with empty query', async () => {

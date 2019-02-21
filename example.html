@@ -13,13 +13,18 @@
     </pre>
     <pre id="log"></pre>
     <script type="module">
-      import createFetch, {query, headers} from './dist/index.js'
+      import createFetch, {query, bodify, headers} from './dist/index.js'
 
       const myFetch = createFetch(fetch, [
         query(),
+        bodify(),
         headers({'x-requested-with': 'fetch'}),
       ])
-      myFetch('/', {query: {foo: 'bar'}}).then(r => {
+      myFetch('/', {
+        method: 'POST',
+        query: {foo: 'bar'},
+        body: new URLSearchParams({lang: '中文'}),
+      }).then(r => {
         console.info(r)
         log.textContent = [...r.headers].join('\n')
       })

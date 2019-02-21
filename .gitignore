@@ -1,8 +1,8 @@
 # Directories
 /node_modules
 /coverage
-/es
-/lib
+/esm
+/cjs
 /dist
 /tmp
 

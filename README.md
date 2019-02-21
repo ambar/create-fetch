@@ -15,12 +15,12 @@ npm install create-fetch
 ## Usage
 
 ```js
-import fetch from 'cross-fetch' // use universal fetch if needed
-import createFetch, {query, headers, bodyStringifier} from 'create-fetch'
+import 'cross-fetch/polyfill' // add universal-fetch polyfill if needed
+import createFetch, {query, headers, bodify} from 'create-fetch'
 
 const myFetch = createFetch(fetch, [
   query(),
-  bodyStringifier(),
+  bodify(),
   headers({'x-requested-with': 'fetch'}),
 ])
 
@@ -54,7 +54,7 @@ Import from [`module`](https://caniuse.com/#search=modules) script (1.4K gzip si
     query(),
     headers({'x-requested-with': 'fetch'}),
   ])
-  myFetch('/example.html', {query: {foo: 'bar'}})
+  myFetch('/api', {query: {foo: 'bar'}})
 </script>
 ```
 
@@ -64,7 +64,7 @@ Import from [`module`](https://caniuse.com/#search=modules) script (1.4K gzip si
 - [`baseUrl(url)`](#baseUrl)
 - [`headers(options)`](#headers)
 - [`query()`](#query)
-- [`bodyStringifier()`](#bodyStringifier)
+- [`bodify()`](#bodify)
 - [`xsrf(options)`](#xsrf)
 
 ### <a name='defaults'></a>`defaults(options)`
@@ -127,14 +127,14 @@ myFetch('/', {
 // GET /?filter=user
 ```
 
-### <a name='bodyStringifier'></a>`bodyStringifier()`
+### <a name='bodify'></a>`bodify()`
 
 Stringify request body.
 
 ```js
-import {bodyStringifier} from 'create-fetch'
+import {bodify} from 'create-fetch'
 
-const myFetch = bodyStringifier()(fetch)
+const myFetch = bodify()(fetch)
 
 // stringify json by default
 myFetch('/', {
@@ -151,8 +151,7 @@ myFetch('/', {
 // stringify form
 myFetch('/', {
   method: 'POST',
-  bodyType: 'form',
-  body: {name: 'JoJo'},
+  body: new URLSearchParams({name: 'JoJo'}),
 })
 // =>
 // POST /
