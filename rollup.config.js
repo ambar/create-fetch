@@ -15,7 +15,7 @@ export default [
   // ES build for unpkg CDN
   {
     input: 'src/index.js',
-    output: {file: pkg.unpkg, format: 'esm', indent: false},
+    output: {file: pkg.unpkg, format: 'esm'},
     plugins: [
       babel({
         babelrc: false,

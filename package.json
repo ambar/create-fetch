@@ -24,8 +24,7 @@
     "dev": "rollup -c -w",
     "build": "rollup -c",
     "prebuild": "rm -rf lib es dist",
-    "test": "jest",
-    "test:coverage": "jest --coverage",
+    "test": "jest --coverage",
     "test:watch": "jest --watch --notify"
   },
   "jest": {
@@ -44,6 +43,7 @@
     "@babel/preset-env": "^7.2.0",
     "babel-core": "^7.0.0-bridge.0",
     "babel-jest": "^23.4.2",
+    "codecov": "^3.2.0",
     "cross-fetch": "^3.0.1",
     "jest": "^24.1.0",
     "rollup": "^1.2.2",
