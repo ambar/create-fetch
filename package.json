@@ -23,7 +23,7 @@
     "prepare": "npm run test && npm run build",
     "dev": "rollup -c -w",
     "build": "rollup -c",
-    "prebuild": "rm -rf lib es dist",
+    "prebuild": "rm -rf cjs esm dist",
     "test": "jest --coverage",
     "test:watch": "jest --watch --notify"
   },
@@ -37,18 +37,17 @@
     ]
   },
   "devDependencies": {
-    "@babel/cli": "^7.2.0",
-    "@babel/core": "^7.2.0",
-    "@babel/plugin-proposal-pipeline-operator": "^7.2.0",
-    "@babel/preset-env": "^7.2.0",
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.3.4",
+    "@babel/plugin-proposal-pipeline-operator": "^7.3.2",
+    "@babel/preset-env": "^7.3.4",
     "babel-core": "^7.0.0-bridge.0",
-    "babel-jest": "^23.4.2",
     "codecov": "^3.2.0",
     "cross-fetch": "^3.0.1",
-    "jest": "^24.1.0",
+    "jest": "^24.5.0",
     "rollup": "^1.2.2",
     "rollup-plugin-babel": "^4.3.2",
     "rollup-plugin-terser": "^4.0.4",
-    "standard-version": "^4.4.0"
+    "standard-version": "^5.0.1"
   }
 }
