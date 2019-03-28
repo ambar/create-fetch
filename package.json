@@ -1,6 +1,6 @@
 {
   "name": "create-fetch",
-  "version": "1.3.2",
+  "version": "2.0.0-beta.0",
   "description": "Utilities for custom fetch",
   "repository": "ambar/create-fetch",
   "license": "MIT",
