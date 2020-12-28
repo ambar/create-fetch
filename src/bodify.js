@@ -1,10 +1,6 @@
 import toHeaders from './utils/toHeaders'
 import toObject from './utils/toObject'
-
-const isPlainObject = obj =>
-  obj !== null &&
-  typeof obj === 'object' &&
-  Object.getPrototypeOf(obj) === Object.prototype
+import isPlainObject from './utils/isPlainObject'
 
 /**
  * Stringify body
