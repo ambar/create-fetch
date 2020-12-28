@@ -135,6 +135,40 @@ Array [
 ]
 `;
 
+exports[`bodify should stringify json 3`] = `
+Array [
+  "/api",
+  Object {
+    "body": "{}",
+    "headers": Object {
+      "content-type": "application/json",
+    },
+  },
+]
+`;
+
+exports[`bodify should stringify json 4`] = `
+Array [
+  "/api",
+  Object {
+    "body": "{}",
+    "headers": Object {
+      "content-type": "application/json",
+    },
+  },
+]
+`;
+
+exports[`bodify should stringify json 5`] = `
+Array [
+  "/api",
+  Object {
+    "body": Object {},
+    "headers": Object {},
+  },
+]
+`;
+
 exports[`bodify should work without options 1`] = `
 Array [
   "/api",

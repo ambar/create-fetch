@@ -1,7 +1,10 @@
 import bodify from '../src/bodify'
 
 const objectSample = {username: 'Jo Jo', lang: '中文', age: undefined}
-const arraySample = [[1, 2], [3, 4]]
+const arraySample = [
+  [1, 2],
+  [3, 4],
+]
 
 describe('bodify', () => {
   const fetch = (...args) => Promise.resolve(args)
@@ -24,6 +27,12 @@ describe('bodify', () => {
     const myFetch = bodify()(fetch)
     expect(await myFetch('/api', {body: objectSample})).toMatchSnapshot()
     expect(await myFetch('/api', {body: arraySample})).toMatchSnapshot()
+    const null0 = Object.create(null)
+    const null1 = Object.create(Object.create(null))
+    const null2 = Object.create(Object.create(Object.create(null)))
+    expect(await myFetch('/api', {body: null0})).toMatchSnapshot()
+    expect(await myFetch('/api', {body: null1})).toMatchSnapshot()
+    expect(await myFetch('/api', {body: null2})).toMatchSnapshot()
   })
 
   it('should stringify form', async () => {
@@ -38,7 +47,9 @@ describe('bodify', () => {
 
   it('should not stringify with non-plain-object or non-array', async () => {
     const myFetch = bodify()(fetch)
-    expect(await myFetch('/api', {body: new class Foo {}()})).toMatchSnapshot()
+    expect(
+      await myFetch('/api', {body: new (class Foo {})()})
+    ).toMatchSnapshot()
     expect(await myFetch('/api', {body: new FormData()})).toMatchSnapshot()
     expect(await myFetch('/api', {body: new Map()})).toMatchSnapshot()
     expect(await myFetch('/api', {body: true})).toMatchSnapshot()
