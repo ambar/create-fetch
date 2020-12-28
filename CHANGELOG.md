@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [2.0.0](https://github.com/ambar/create-fetch/compare/v1.3.1...v2.0.0) (2020-12-28)
+
+
+### Bug Fixes
+
+* export baseUrl ([f5a64c9](https://github.com/ambar/create-fetch/commit/f5a64c9))
+
+
+### Features
+
+* use URLSearchParams, rename bodyStringifier to bodify ([fcc5cc6](https://github.com/ambar/create-fetch/commit/fcc5cc6))
+
+
+### BREAKING CHANGES
+
+* use URLSearchParams, rename bodyStringifier to bodify
+
+
+
 # [2.0.0-beta.0](https://github.com/ambar/create-fetch/compare/v1.3.2...v2.0.0-beta.0) (2019-03-28)
 
 
