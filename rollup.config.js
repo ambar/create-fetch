@@ -25,10 +25,10 @@ export default [
             {
               loose: true,
               useBuiltIns: 'entry',
-              targets: {
-                // https://caniuse.com/#search=modules
-                browsers: ['Chrome 61', 'Firefox 60', 'Safari 10.1'],
-              },
+              bugfixes: true,
+              // https://github.com/babel/preset-modules
+              // https://babeljs.io/docs/en/babel-preset-env#targetsesmodules
+              targets: {esmodules: true},
             },
           ],
         ],
