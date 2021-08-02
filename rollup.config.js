@@ -24,12 +24,17 @@ export default [
             '@babel/preset-env',
             {
               loose: true,
-              useBuiltIns: 'entry',
               bugfixes: true,
               // https://github.com/babel/preset-modules
               // https://babeljs.io/docs/en/babel-preset-env#targetsesmodules
               targets: {esmodules: true},
             },
+          ],
+        ],
+        plugins: [
+          [
+            '@babel/plugin-proposal-object-rest-spread',
+            {loose: true, useBuiltIns: true},
           ],
         ],
       }),
