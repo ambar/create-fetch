@@ -5,7 +5,7 @@
 import xsrf from '../src/xsrf'
 
 describe('xsrf', () => {
-  const fetch = (...args) => Promise.resolve(args)
+  const fetch = async (...args) => args
 
   it('should not throw on server-side', async () => {
     const myFetch = xsrf()(fetch)

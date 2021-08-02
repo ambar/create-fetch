@@ -3,7 +3,7 @@ import query from '../src/query'
 import bodify from '../src/bodify'
 
 describe('createFetch', () => {
-  const fetch = (...args) => Promise.resolve(args)
+  const fetch = async (...args) => args
 
   it('should create fetch without middlewares', async () => {
     const myFetch = createFetch(fetch)
@@ -34,7 +34,7 @@ describe('createFetch', () => {
   })
 
   it('should create fetch with compose', async () => {
-    const next = onNext => fetch => (url, options) => {
+    const next = (onNext) => (fetch) => (url, options) => {
       onNext(url, options)
       return fetch(url, options)
     }

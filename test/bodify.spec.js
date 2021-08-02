@@ -7,7 +7,7 @@ const arraySample = [
 ]
 
 describe('bodify', () => {
-  const fetch = (...args) => Promise.resolve(args)
+  const fetch = async (...args) => args
 
   it('should accept Headers', async () => {
     const myFetch = bodify()(fetch)

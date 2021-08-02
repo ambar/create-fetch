@@ -1,7 +1,7 @@
 import defaults from '../src/defaults'
 
 describe('defaults', () => {
-  const fetch = (...args) => Promise.resolve(args)
+  const fetch = async (...args) => args
 
   it('should add defaults', async () => {
     const myFetch = defaults({credentials: 'include'})(fetch)

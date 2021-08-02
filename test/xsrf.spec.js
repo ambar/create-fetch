@@ -3,7 +3,7 @@ import xsrf from '../src/xsrf'
 const sampleCookie = '_xsrf=uuid|foo.bar;_ga=1'
 
 describe('xsrf', () => {
-  const fetch = (...args) => Promise.resolve(args)
+  const fetch = async (...args) => args
 
   beforeEach(() => {
     document.cookie = '_xsrf='

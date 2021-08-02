@@ -1,7 +1,7 @@
 import headers from '../src/headers'
 
 describe('headers', () => {
-  const fetch = (...args) => Promise.resolve(args)
+  const fetch = async (...args) => args
 
   it('should add headers', async () => {
     const myFetch = headers({'x-version': '1.0'})(fetch)
