@@ -103,6 +103,8 @@ import {headers} from 'create-fetch'
 
 const myFetch = headers({
   'x-requested-with': 'fetch',
+  // null or undefined will be removed
+  'x-foo': null,
 })(fetch)
 
 myFetch('/')

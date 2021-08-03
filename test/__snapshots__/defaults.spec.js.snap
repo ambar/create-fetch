@@ -1,5 +1,31 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`defaults should accept Headers 1`] = `
+Array [
+  "/",
+  Object {
+    "headers": Object {
+      "a": "1, 2",
+      "b": "1",
+      "c": "1",
+    },
+  },
+]
+`;
+
+exports[`defaults should accept Headers 2`] = `
+Array [
+  "/",
+  Object {
+    "headers": Object {
+      "a": "1, 2",
+      "b": "2",
+      "c": "1",
+    },
+  },
+]
+`;
+
 exports[`defaults should add defaults 1`] = `
 Array [
   "/",
@@ -30,6 +56,20 @@ Array [
     "credentials": "omit",
     "headers": Object {
       "content-type": "text/json",
+    },
+  },
+]
+`;
+
+exports[`defaults should filter null or undefined 1`] = `
+Array [
+  "/",
+  Object {
+    "headers": Object {
+      "c": "0",
+      "d": "false",
+      "e": "",
+      "g": "1",
     },
   },
 ]

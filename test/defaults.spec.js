@@ -37,12 +37,16 @@ describe('defaults', () => {
     const headers = new Headers({a: 1, b: 1})
     headers.append('a', 2)
     const myFetch = defaults({headers})(fetch)
-    const result = await myFetch('/api', {headers: {b: 2, c: 1}})
-    expect(result).toEqual(
-      await myFetch('/api', {headers: {a: '1, 2', b: '2', c: '1'}})
-    )
-    expect(result).toEqual(
-      await myFetch('/api', {headers: new Headers({a: '1, 2', b: '2', c: '1'})})
-    )
+    expect(await myFetch('/', {headers: {b: 1, c: 1}})).toMatchSnapshot()
+    // do not merge to `b: '1, 2'`
+    expect(
+      await myFetch('/', {headers: new Headers({a: '1, 2', b: '2', c: '1'})})
+    ).toMatchSnapshot()
+  })
+
+  it('should filter null or undefined', async () => {
+    const values = {a: null, b: undefined, c: 0, d: false, e: ''}
+    const myFetch = defaults({headers: values})(fetch)
+    expect(await myFetch('/', {headers: {f: null, g: 1}})).toMatchSnapshot()
   })
 })
