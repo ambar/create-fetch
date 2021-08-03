@@ -1,6 +1,14 @@
-# Change Log
+# Changelog
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+
+## [3.0.0](https://github.com/ambar/create-fetch/compare/v2.0.0...v3.0.0) (2021-08-03)
+
+
+### Features
+
+* filter null or undefined values in headers ([17beb38](https://github.com/ambar/create-fetch/commit/17beb38c06bfad21bd1fc7322688989db7d6dc20))
+* use URL in `baseUrl()`, remove path joining ([fbc6bb7](https://github.com/ambar/create-fetch/commit/fbc6bb73a0379659b88aaaf52d80bcf47535fe56))
 
 # [2.0.0](https://github.com/ambar/create-fetch/compare/v1.3.1...v2.0.0) (2020-12-28)
 
