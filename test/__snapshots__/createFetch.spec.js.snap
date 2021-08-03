@@ -39,7 +39,7 @@ Array [
   Object {
     "body": URLSearchParams: "name=JoJo",
     "headers": Object {
-      "content-type": "application/x-www-form-urlencoded",
+      "content-type": "application/x-www-form-urlencoded;charset=UTF-8",
     },
     "method": "POST",
   },

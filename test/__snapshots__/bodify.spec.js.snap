@@ -93,7 +93,7 @@ Array [
   Object {
     "body": URLSearchParams: "username=Jo+Jo&lang=%E4%B8%AD%E6%96%87&age=undefined",
     "headers": Object {
-      "content-type": "application/x-www-form-urlencoded",
+      "content-type": "application/x-www-form-urlencoded;charset=UTF-8",
     },
   },
 ]
@@ -105,7 +105,7 @@ Array [
   Object {
     "body": URLSearchParams: "1=2&3=4",
     "headers": Object {
-      "content-type": "application/x-www-form-urlencoded",
+      "content-type": "application/x-www-form-urlencoded;charset=UTF-8",
     },
   },
 ]

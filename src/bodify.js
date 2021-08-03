@@ -11,7 +11,10 @@ const bodify = () => fetch => (url, {body, ...options} = {}) => {
   if (body instanceof URLSearchParams) {
     // patches old browsers
     if (!headers.get(contentType)) {
-      headers.set(contentType, 'application/x-www-form-urlencoded')
+      headers.set(
+        contentType,
+        'application/x-www-form-urlencoded;charset=UTF-8'
+      )
     }
   } else if (isPlainObject(body) || Array.isArray(body)) {
     body = JSON.stringify(body)
