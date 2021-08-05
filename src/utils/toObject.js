@@ -1,11 +1,5 @@
 const toObject =
   Object.fromEntries ||
-  (iterable => {
-    const obj = {}
-    for (const [key, value] of iterable) {
-      obj[key] = value
-    }
-    return obj
-  })
+  ((obj) => Array.from(obj).reduce((acc, [k, v]) => ((acc[k] = v), acc), {}))
 
 export default toObject
