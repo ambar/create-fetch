@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.1.0](https://github.com/ambar/create-fetch/compare/v3.0.0...v3.1.0) (2021-08-05)
+
+
+### Features
+
+* **query:** set null or undefined to empty ([c65a3b9](https://github.com/ambar/create-fetch/commit/c65a3b980dbfeff17d559b070649c97aee2b24fd))
+
 ## [3.0.0](https://github.com/ambar/create-fetch/compare/v2.0.0...v3.0.0) (2021-08-03)
 
 
