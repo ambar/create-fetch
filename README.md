@@ -124,10 +124,14 @@ import {query} from 'create-fetch'
 const myFetch = query()(fetch)
 
 myFetch('/', {
-  query: {filter: 'user'},
+  query: {
+    filter: 'user'
+    // null or undefined will be set to empty
+    foo: null
+  },
 })
 // =>
-// GET /?filter=user
+// GET /?filter=user&foo
 ```
 
 ### <a name='bodify'></a>`bodify()`

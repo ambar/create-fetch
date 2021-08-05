@@ -47,6 +47,10 @@ describe('defaults', () => {
   it('should filter null or undefined', async () => {
     const values = {a: null, b: undefined, c: 0, d: false, e: ''}
     const myFetch = defaults({headers: values})(fetch)
-    expect(await myFetch('/', {headers: {f: null, g: 1}})).toMatchSnapshot()
+    const extra = {f: null, g: 1}
+    expect(await myFetch('/', {headers: extra})).toMatchSnapshot('plain')
+    expect(
+      await myFetch('/', {headers: new Map(Object.entries(extra))})
+    ).toMatchSnapshot('iterator')
   })
 })

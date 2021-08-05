@@ -61,7 +61,21 @@ Array [
 ]
 `;
 
-exports[`defaults should filter null or undefined 1`] = `
+exports[`defaults should filter null or undefined: iterator 1`] = `
+Array [
+  "/",
+  Object {
+    "headers": Object {
+      "c": "0",
+      "d": "false",
+      "e": "",
+      "g": "1",
+    },
+  },
+]
+`;
+
+exports[`defaults should filter null or undefined: plain 1`] = `
 Array [
   "/",
   Object {

@@ -1,7 +1,7 @@
 import query from '../src/query'
 
 describe('query', () => {
-  const fetch = url => Promise.resolve(url)
+  const fetch = (url) => Promise.resolve(url)
 
   it('should add query string', async () => {
     const myFetch = query()(fetch)
@@ -25,6 +25,21 @@ describe('query', () => {
     expect(await myFetch('/api?', {query: {foo: 1}})).toBe('/api?foo=1')
     expect(await myFetch('/api?', {query: {}})).toBe('/api?')
     expect(await myFetch('/api?', {query: false})).toBe('/api?')
+  })
+
+  it('should set null or undefined to empty string', async () => {
+    const myFetch = query()(fetch)
+    const values = {a: null, b: undefined, c: 0}
+    expect(
+      await myFetch('/', {
+        query: values,
+      })
+    ).toMatchSnapshot('plain')
+    expect(
+      await myFetch('/', {
+        query: new Map(Object.entries(values)),
+      })
+    ).toMatchSnapshot('iterator')
   })
 
   it('should work without options', async () => {
