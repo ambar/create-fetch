@@ -1,44 +1,44 @@
-import babel from '@rollup/plugin-babel'
+import typescript from 'rollup-plugin-typescript2'
 import {terser} from 'rollup-plugin-terser'
 import pkg from './package.json'
 
+const source = 'src/index.ts'
+
 export default [
   {
-    input: 'src/index.js',
+    input: source,
     output: [
-      //
       {file: pkg.main, format: 'cjs'},
       {file: pkg.module, format: 'esm'},
     ],
-    plugins: [babel()],
+    plugins: [
+      typescript({
+        tsconfigOverride: {
+          compilerOptions: {
+            // preserve object spread
+            target: 'ES2018',
+          },
+        },
+      }),
+    ],
   },
-  // ES build for unpkg CDN
+  // Modern ESM build for unpkg CDN, and script[type=module]
   {
-    input: 'src/index.js',
+    input: source,
     output: {file: pkg.unpkg, format: 'esm'},
     plugins: [
-      babel({
-        babelrc: false,
-        presets: [
-          [
-            '@babel/preset-env',
-            {
-              loose: true,
-              bugfixes: true,
-              // https://github.com/babel/preset-modules
-              // https://babeljs.io/docs/en/babel-preset-env#targetsesmodules
-              targets: {esmodules: true},
-            },
-          ],
-        ],
-        plugins: [
-          [
-            '@babel/plugin-proposal-object-rest-spread',
-            {loose: true, useBuiltIns: true},
-          ],
-        ],
+      typescript({
+        tsconfigOverride: {
+          compilerOptions: {
+            // transpile object spread
+            target: 'ES2017',
+            declaration: false,
+          },
+        },
       }),
-      terser(),
+      terser({
+        output: {comments: false},
+      }),
     ],
   },
 ]
