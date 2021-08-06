@@ -1,5 +1,6 @@
 import toHeaders from './utils/toHeaders'
 import toObject from './utils/toObject'
+import {FetchEnhancer} from './types'
 
 const getCookie = (key) => {
   const [, value] = document.cookie.match(new RegExp(`${key}=([^;]+)`)) || []
@@ -9,7 +10,7 @@ const getCookie = (key) => {
 const xsrfMethods = ['DELETE', 'PATCH', 'POST', 'PUT']
 
 const xsrf =
-  ({cookieName = '_xsrf', headerName = 'x-xsrftoken'} = {}) =>
+  ({cookieName = '_xsrf', headerName = 'x-xsrftoken'} = {}): FetchEnhancer =>
   (fetch) =>
   (url, options = {}) => {
     const headers = toHeaders(options.headers)

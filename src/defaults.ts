@@ -1,7 +1,8 @@
 import toHeaders from './utils/toHeaders'
 import toObject from './utils/toObject'
+import {FetchEnhancer} from './types'
 
-export default (defaults = {}) =>
+export default (defaults: RequestInit = {}): FetchEnhancer =>
   (fetch) =>
   (url, options = {}) =>
     fetch(url, {

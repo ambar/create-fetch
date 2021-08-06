@@ -17,13 +17,13 @@ npm install create-fetch
 
 ```js
 import 'cross-fetch/polyfill' // add universal-fetch polyfill if needed
-import createFetch, {query, headers, bodify} from 'create-fetch'
+import {composeFetch, query, headers, bodify} from 'create-fetch'
 
-const myFetch = createFetch(fetch, [
+const myFetch = composeFetch([
   query(),
   bodify(),
   headers({'x-requested-with': 'fetch'}),
-])
+])(fetch)
 
 // same as:
 // const myFetch = compose(query(), ...)(fetch)
@@ -44,6 +44,45 @@ myFetch('/api', {
 // Request Payload:
 //   {"name":"JoJo"}
 ```
+
+### Typing
+
+```ts
+import {FetchCompose, FetchEnhancer, query, bodify} from 'create-fetch'
+import flowRight from 'lodash/flowRight'
+
+// inject extra options
+type FooInit = {foo?: boolean}
+const foo =
+  (): FetchEnhancer<FooInit> =>
+  (fetch) =>
+  (url, {foo, ...options}) => {
+    if (foo) {
+      // ...
+    }
+    return fetch(url, options)
+  }
+
+const bar = (): FetchEnhancer => (fetch) => (url, options) => {
+  return fetch(url, options)
+}
+
+// same as `composeFetch`
+const myFetch = (flowRight as FetchCompose)([
+  //
+  foo(),
+  bar(),
+  query(),
+  bodify(),
+])(fetch)
+
+// (url: RequestInfo, options?: RequestInit & QueryInit & FooInit) => Promise<Response>
+myFetch('/', {
+  withEncrypt: true,
+})
+```
+
+### ESM
 
 Import from [`module`](https://caniuse.com/#search=modules) script (1.4K gzip size):
 

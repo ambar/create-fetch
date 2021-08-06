@@ -1,12 +1,13 @@
 import toHeaders from './utils/toHeaders'
 import toObject from './utils/toObject'
 import isPlainObject from './utils/isPlainObject'
+import {FetchEnhancer} from './types'
 
 /**
  * Stringify body
  */
 const bodify =
-  () =>
+  (): FetchEnhancer =>
   (fetch) =>
   (url, {body, ...options} = {}) => {
     let headers = toHeaders(options.headers)
