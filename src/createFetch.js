@@ -1,4 +1,7 @@
-const compose = (...fns) => arg => fns.reduceRight((acc, f) => f(acc), arg)
+const compose =
+  (...fns) =>
+  (arg) =>
+    fns.reduceRight((acc, f) => f(acc), arg)
 
 const createFetch = (fetch, middlewares = []) => compose(...middlewares)(fetch)
 

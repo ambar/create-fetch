@@ -1,3 +1,3 @@
 import defaults from './defaults'
 
-export default headers => defaults({headers})
+export default (headers) => defaults({headers})
