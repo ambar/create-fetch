@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.2.1](https://github.com/ambar/create-fetch/compare/v3.2.0...v3.2.1) (2021-08-12)
+
+
+### Bug Fixes
+
+* use readonly types ([fec9c3e](https://github.com/ambar/create-fetch/commit/fec9c3e028193da496033e400579f6048c59bbd4))
+
 ## [3.2.0](https://github.com/ambar/create-fetch/compare/v3.1.0...v3.2.0) (2021-08-12)
 
 
