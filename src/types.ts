@@ -1,6 +1,29 @@
 export type Fetch = typeof fetch
 export type FetchReturn = ReturnType<Fetch>
 
+/**
+ * Enhance fetch
+ *
+ * **Example**
+ *
+ * ```ts
+ * // with extra arguments
+ * type FooInit = {foo?: boolean}
+ * const foo = (): FetchEnhancer<FooInit> => (fetch) => (url, {foo, ...options}) => {
+ *   if (foo) {
+ *     // ...
+ *   }
+ *   return fetch(url, options)
+ * }
+ *
+ * // no extra arguments
+ * const bar = (): FetchEnhancer => (fetch) => (url, options) => {
+ *   return fetch(url, options)
+ * }
+ *
+ * const myFetch = foo()(bar()(fetch))
+ * ```
+ */
 export type FetchEnhancer<Extra = {}> = <F extends Fetch>(
   fetch: F
 ) => (
@@ -9,10 +32,19 @@ export type FetchEnhancer<Extra = {}> = <F extends Fetch>(
 ) => FetchReturn
 
 type ExtractGeneric<T> = T extends FetchEnhancer<infer X> ? X : never
-type SpreadGeneric<T extends [...any]> = T extends [infer L, ...infer R]
+type SpreadGeneric<T extends readonly [...any]> = T extends readonly [infer L, ...infer R]
   ? ExtractGeneric<L> & SpreadGeneric<R>
   : unknown
 
+/**
+ * Compose fetch
+ *
+ * **Example**
+ *
+ * ```ts
+ * const myFetch = (myCompose as FetchCompose)(query, bodify)(fetch)
+ * ```
+ */
 export type FetchCompose = <FEs extends FetchEnhancer[]>(
   ...args: FEs
 ) => <F extends Fetch>(
@@ -22,8 +54,7 @@ export type FetchCompose = <FEs extends FetchEnhancer[]>(
   options?: Parameters<F>[1] & SpreadGeneric<FEs>
 ) => FetchReturn
 
-// TODO: fix args typing
-export type FetchCreate = <F extends Fetch, FEs extends FetchEnhancer[]>(
+export type FetchCreate = <F extends Fetch, FEs extends readonly FetchEnhancer[]>(
   fetch: F,
   args: FEs
 ) => (
