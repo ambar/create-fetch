@@ -2,8 +2,7 @@
 
 Utilities for custom [fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch).
 
-[![build status](https://badgen.net/travis/ambar/create-fetch)](https://travis-ci.org/ambar/create-fetch)
-[![coverage status](https://badgen.net/codecov/c/github/ambar/create-fetch)](https://codecov.io/gh/ambar/create-fetch)
+[![Coverage Status](https://coveralls.io/repos/github/ambar/create-fetch/badge.svg?branch=master)](https://coveralls.io/github/ambar/create-fetch?branch=master)
 [![npm version](https://badgen.net/npm/v/create-fetch)](https://www.npmjs.com/package/create-fetch)
 [![minzipped size](https://badgen.net/bundlephobia/minzip/create-fetch)](https://bundlephobia.com/result?p=create-fetch)
 
