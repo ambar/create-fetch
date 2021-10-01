@@ -2,11 +2,12 @@ import typescript from 'rollup-plugin-typescript2'
 import {terser} from 'rollup-plugin-terser'
 import pkg from './package.json'
 
-const source = 'src/index.ts'
-
-export default [
+/**
+ * @type {import('rollup').RollupOptions[]}
+ */
+const config = [
   {
-    input: source,
+    input: pkg.source,
     output: [
       {file: pkg.main, format: 'cjs'},
       {file: pkg.module, format: 'esm'},
@@ -14,6 +15,8 @@ export default [
     plugins: [
       typescript({
         tsconfigOverride: {
+          include: ['src/**/*'],
+          exclude: ['**/*.spec.*', '**/__tests__'],
           compilerOptions: {
             // preserve object spread
             target: 'ES2018',
@@ -24,7 +27,7 @@ export default [
   },
   // Modern ESM build for unpkg CDN, and script[type=module]
   {
-    input: source,
+    input: pkg.source,
     output: {file: pkg.unpkg, format: 'esm'},
     plugins: [
       typescript({
@@ -42,3 +45,5 @@ export default [
     ],
   },
 ]
+
+export default config

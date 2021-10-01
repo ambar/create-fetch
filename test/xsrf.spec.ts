@@ -4,7 +4,8 @@ const sampleCookie = '_xsrf=uuid|foo.bar;_ga=1'
 
 describe('xsrf', () => {
   const fetch = jest.fn(
-    (async (...args) => args) as unknown as typeof globalThis.fetch
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-return
+    (async (...args: any[]) => args) as unknown as typeof globalThis.fetch
   )
 
   beforeEach(() => {

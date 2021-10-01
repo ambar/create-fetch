@@ -2,8 +2,8 @@ import toHeaders from './utils/toHeaders'
 import toObject from './utils/toObject'
 import {FetchEnhancer} from './types'
 
-const getCookie = (key) => {
-  const [, value] = document.cookie.match(new RegExp(`${key}=([^;]+)`)) || []
+const getCookie = (key: string) => {
+  const [, value] = new RegExp(`${key}=([^;]+)`).exec(document.cookie) || []
   return value
 }
 

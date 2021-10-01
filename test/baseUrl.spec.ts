@@ -4,7 +4,7 @@ describe('baseUrl', () => {
   const fetch = jest.fn(
     (async (...args) => args) as unknown as typeof globalThis.fetch
   )
-  const fetchUrls = (myFetch, urls) =>
+  const fetchUrls = (myFetch: typeof globalThis.fetch, urls: string[]) =>
     Promise.all(urls.map((url) => myFetch(url)))
 
   it('should add base url', async () => {

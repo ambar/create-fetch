@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unsafe-assignment,@typescript-eslint/no-explicit-any */
 import bodify from '../src/bodify'
 
 const objectSample = {username: 'Jo Jo', lang: '中文', age: undefined}

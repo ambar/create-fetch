@@ -5,6 +5,7 @@
   "repository": "ambar/create-fetch",
   "license": "MIT",
   "sideEffects": false,
+  "source": "src/index.ts",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
   "unpkg": "dist/index.js",
@@ -20,6 +21,7 @@
   ],
   "scripts": {
     "prepare": "npm run test && npm run build",
+    "lint": "recommended",
     "dev": "rollup -c -w",
     "build": "rollup -c",
     "prebuild": "rm -rf dist/**",
@@ -42,9 +44,10 @@
     "cross-fetch": "^3.0.1",
     "es-jest": "^1.2.0",
     "jest": "^27.0.6",
+    "recommended": "^0.0.2",
     "rollup": "^2.55.1",
     "rollup-plugin-terser": "^7.0.2",
     "rollup-plugin-typescript2": "^0.30.0",
-    "typescript": "^4.3.5"
+    "typescript": "^4.4.3"
   }
 }

@@ -1,7 +1,8 @@
+/* eslint-disable @typescript-eslint/no-unsafe-return */
 import {FetchEnhancer, FetchCompose, FetchCreate} from './types'
 
 const compose =
-  (...fns) =>
+  (...fns: ((...args: any[]) => any)[]) =>
   (arg) =>
     fns.reduceRight((acc, f) => f(acc), arg)
 
@@ -27,5 +28,8 @@ export const composeFetch: FetchCompose = compose
  * ])
  * ```
  */
-export const createFetch: FetchCreate = (fetch, enhancers: readonly FetchEnhancer[] = []) => compose(...enhancers)(fetch)
+export const createFetch: FetchCreate = (
+  fetch,
+  enhancers: readonly FetchEnhancer[] = []
+) => compose(...enhancers)(fetch)
 export default createFetch

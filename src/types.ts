@@ -24,15 +24,16 @@ export type FetchReturn = ReturnType<Fetch>
  * const myFetch = foo()(bar()(fetch))
  * ```
  */
+// eslint-disable-next-line @typescript-eslint/ban-types
 export type FetchEnhancer<Extra = {}> = <F extends Fetch>(
   fetch: F
-) => (
-  url: Parameters<F>[0],
-  options?: Parameters<F>[1] & Extra
-) => FetchReturn
+) => (url: Parameters<F>[0], options?: Parameters<F>[1] & Extra) => FetchReturn
 
 type ExtractGeneric<T> = T extends FetchEnhancer<infer X> ? X : never
-type SpreadGeneric<T extends readonly [...any]> = T extends readonly [infer L, ...infer R]
+type SpreadGeneric<T extends readonly [...any]> = T extends readonly [
+  infer L,
+  ...infer R
+]
   ? ExtractGeneric<L> & SpreadGeneric<R>
   : unknown
 
@@ -54,11 +55,13 @@ export type FetchCompose = <FEs extends FetchEnhancer[]>(
   options?: Parameters<F>[1] & SpreadGeneric<FEs>
 ) => FetchReturn
 
-export type FetchCreate = <F extends Fetch, FEs extends readonly FetchEnhancer[]>(
+export type FetchCreate = <
+  F extends Fetch,
+  FEs extends readonly FetchEnhancer[]
+>(
   fetch: F,
   args: FEs
 ) => (
   url: Parameters<F>[0],
   options?: Parameters<F>[1] & SpreadGeneric<FEs>
 ) => FetchReturn
-

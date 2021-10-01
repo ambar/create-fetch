@@ -1,11 +1,16 @@
 import getEntries from './getEntries'
 
-// filter null or undefined
-const filterNil = (obj: any) => (getEntries(obj) as string[][]).filter(([k, v]) => v != null)
+type KVObject = Record<string, unknown>
 
-const toHeaders = (headers: HeadersInit | object) =>
+// filter null or undefined
+const filterNil = (obj: KVObject) =>
+  (getEntries(obj) as string[][]).filter(([, v]) => v != null)
+
+const toHeaders = (headers: HeadersInit | KVObject) =>
   new Headers(
-    headers instanceof Headers ? headers : (headers && filterNil(headers)) || {}
+    headers instanceof Headers
+      ? headers
+      : (headers && filterNil(headers as KVObject)) || {}
   )
 
 export default toHeaders

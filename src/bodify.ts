@@ -24,7 +24,7 @@ const bodify =
   (): FetchEnhancer =>
   (fetch) =>
   (url, {body, ...options} = {}) => {
-    let headers = toHeaders(options.headers)
+    const headers = toHeaders(options.headers)
     const contentType = 'content-type'
     if (body instanceof URLSearchParams) {
       // patches old browsers

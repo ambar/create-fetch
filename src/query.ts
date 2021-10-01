@@ -2,10 +2,11 @@ import getEntries from './utils/getEntries'
 import {FetchEnhancer} from './types'
 
 // preserve legacy querystring/qs behavior, set null or undefined to empty
-const mapNilToEmpty = (obj: object) => (getEntries(obj)).map(([k, v]) => [(k), (v ?? '')])
+const mapNilToEmpty = (obj: Record<string, any>) =>
+  getEntries(obj).map(([k, v]) => [k, (v as string) ?? ''])
 
 type QueryInit = {
-  query?: string[][] | Record<string, any>
+  query?: string[][] | Record<string, any> | URLSearchParams
 }
 
 /**
@@ -13,7 +14,7 @@ type QueryInit = {
  */
 const query =
   (): FetchEnhancer<QueryInit> =>
-  (fetch)  =>
+  (fetch) =>
   (url, {query, ...options} = {}) => {
     if (query !== null && typeof query === 'object') {
       const params = (

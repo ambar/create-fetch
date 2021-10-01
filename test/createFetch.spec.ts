@@ -1,6 +1,8 @@
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import createFetch from '../src/createFetch'
 import query from '../src/query'
 import bodify from '../src/bodify'
+import {FetchEnhancer} from '../src/types'
 
 describe('createFetch', () => {
   const fetch = jest.fn(
@@ -38,10 +40,15 @@ describe('createFetch', () => {
   })
 
   it('should create fetch with compose', async () => {
-    const next = (onNext) => (fetch) => (url, options) => {
-      onNext(url, options)
-      return fetch(url, options)
-    }
+    const next =
+      (
+        onNext: (...args: Parameters<typeof globalThis.fetch>) => void
+      ): FetchEnhancer =>
+      (fetch) =>
+      (url, options) => {
+        onNext(url, options)
+        return fetch(url, options)
+      }
 
     const onNext = jest.fn()
     const myFetch = createFetch(fetch, [query(), next(onNext)] as const)
