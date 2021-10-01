@@ -1,7 +1,9 @@
 import defaults from '../src/defaults'
 
 describe('defaults', () => {
-  const fetch = async (...args) => args
+  const fetch = jest.fn(
+    (async (...args) => args) as unknown as typeof globalThis.fetch
+  )
 
   it('should add defaults', async () => {
     const myFetch = defaults({credentials: 'include'})(fetch)
@@ -34,10 +36,10 @@ describe('defaults', () => {
   })
 
   it('should accept Headers', async () => {
-    const headers = new Headers({a: 1, b: 1})
-    headers.append('a', 2)
+    const headers = new Headers({a: '1', b: '1'})
+    headers.append('a', '2')
     const myFetch = defaults({headers})(fetch)
-    expect(await myFetch('/', {headers: {b: 1, c: 1}})).toMatchSnapshot()
+    expect(await myFetch('/', {headers: {b: '1', c: '1'}})).toMatchSnapshot()
     // do not merge to `b: '1, 2'`
     expect(
       await myFetch('/', {headers: new Headers({a: '1, 2', b: '2', c: '1'})})
@@ -45,12 +47,20 @@ describe('defaults', () => {
   })
 
   it('should filter null or undefined', async () => {
-    const values = {a: null, b: undefined, c: 0, d: false, e: ''}
+    const values = {
+      a: null,
+      b: undefined,
+      c: 0,
+      d: false,
+      e: '',
+    } as unknown as HeadersInit
     const myFetch = defaults({headers: values})(fetch)
-    const extra = {f: null, g: 1}
+    const extra = {f: null, g: 1} as unknown as HeadersInit
     expect(await myFetch('/', {headers: extra})).toMatchSnapshot('plain')
     expect(
-      await myFetch('/', {headers: new Map(Object.entries(extra))})
+      await myFetch('/', {
+        headers: new Map(Object.entries(extra)) as unknown as string[][],
+      })
     ).toMatchSnapshot('iterator')
   })
 })

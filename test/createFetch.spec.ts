@@ -3,16 +3,20 @@ import query from '../src/query'
 import bodify from '../src/bodify'
 
 describe('createFetch', () => {
-  const fetch = async (...args) => args
+  const fetch = jest.fn(
+    (async (...args) => args) as unknown as typeof globalThis.fetch
+  )
 
   it('should create fetch without middlewares', async () => {
-    const myFetch = createFetch(fetch)
+    const myFetch = createFetch(fetch, [])
     expect(await myFetch('/api')).toMatchSnapshot()
-    expect(await myFetch('/api', {headers: {'x-versoin': 1}})).toMatchSnapshot()
+    expect(
+      await myFetch('/api', {headers: {'x-version': '1'}})
+    ).toMatchSnapshot()
   })
 
   it('should create fetch with middlewares', async () => {
-    const presets = [query(), bodify()]
+    const presets = [query(), bodify()] as const
     const myFetch = createFetch(fetch, presets)
 
     // default
@@ -21,7 +25,7 @@ describe('createFetch', () => {
     expect(await myFetch('/api', {query: {filter: 'name'}})).toMatchSnapshot()
     // json
     expect(
-      await myFetch('/api', {method: 'POST', body: {name: 'JoJo'}})
+      await myFetch('/api', {method: 'POST', body: {name: 'JoJo'} as any})
     ).toMatchSnapshot()
     // form
     expect(
@@ -40,7 +44,7 @@ describe('createFetch', () => {
     }
 
     const onNext = jest.fn()
-    const myFetch = createFetch(fetch, [query(), next(onNext)])
+    const myFetch = createFetch(fetch, [query(), next(onNext)] as const)
     await myFetch('/api', {method: 'POST', query: {foo: 1}})
     expect(onNext).toBeCalledWith('/api?foo=1', {method: 'POST'})
   })

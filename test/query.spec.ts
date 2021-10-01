@@ -1,7 +1,9 @@
 import query from '../src/query'
 
 describe('query', () => {
-  const fetch = (url) => Promise.resolve(url)
+  const fetch = jest.fn(
+    (async (...args) => args[0]) as unknown as typeof globalThis.fetch
+  )
 
   it('should add query string', async () => {
     const myFetch = query()(fetch)
@@ -24,7 +26,7 @@ describe('query', () => {
     expect(await myFetch('/api?ok', {query: {foo: 1}})).toBe('/api?ok&foo=1')
     expect(await myFetch('/api?', {query: {foo: 1}})).toBe('/api?foo=1')
     expect(await myFetch('/api?', {query: {}})).toBe('/api?')
-    expect(await myFetch('/api?', {query: false})).toBe('/api?')
+    expect(await myFetch('/api?', {query: false as unknown})).toBe('/api?')
   })
 
   it('should set null or undefined to empty string', async () => {

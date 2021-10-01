@@ -7,26 +7,28 @@ const arraySample = [
 ]
 
 describe('bodify', () => {
-  const fetch = async (...args) => args
+  const fetch = jest.fn(
+    (async (...args) => args) as unknown as typeof globalThis.fetch
+  )
 
   it('should accept Headers', async () => {
     const myFetch = bodify()(fetch)
-    const headers = new Headers({a: 1})
-    headers.append('a', 2)
-    const result = await myFetch('/api', {body: {}, headers})
+    const headers = new Headers({a: '1'})
+    headers.append('a', '2')
+    const result = await myFetch('/api', {body: {} as any, headers})
     expect(result).toMatchSnapshot()
     expect(result).toEqual(
-      await myFetch('/api', {body: {}, headers: {a: '1, 2'}})
+      await myFetch('/api', {body: {} as any, headers: {a: '1, 2'}})
     )
     expect(result).toEqual(
-      await myFetch('/api', {body: {}, headers: {a: '1', A: 2}})
+      await myFetch('/api', {body: {} as any, headers: {a: '1', A: '2'}})
     )
   })
 
   it('should stringify json', async () => {
     const myFetch = bodify()(fetch)
-    expect(await myFetch('/api', {body: objectSample})).toMatchSnapshot()
-    expect(await myFetch('/api', {body: arraySample})).toMatchSnapshot()
+    expect(await myFetch('/api', {body: objectSample as any})).toMatchSnapshot()
+    expect(await myFetch('/api', {body: arraySample as any})).toMatchSnapshot()
     const null0 = Object.create(null)
     const null1 = Object.create(Object.create(null))
     const null2 = Object.create(Object.create(Object.create(null)))
@@ -41,19 +43,23 @@ describe('bodify', () => {
       await myFetch('/api', {body: new URLSearchParams(objectSample)})
     ).toMatchSnapshot()
     expect(
-      await myFetch('/api', {body: new URLSearchParams(arraySample)})
+      await myFetch('/api', {
+        body: new URLSearchParams(arraySample as unknown as string[][]),
+      })
     ).toMatchSnapshot()
   })
 
   it('should not stringify with non-plain-object or non-array', async () => {
     const myFetch = bodify()(fetch)
     expect(
-      await myFetch('/api', {body: new (class Foo {})()})
+      await myFetch('/api', {body: new (class Foo {})() as any})
     ).toMatchSnapshot()
-    expect(await myFetch('/api', {body: new FormData()})).toMatchSnapshot()
-    expect(await myFetch('/api', {body: new Map()})).toMatchSnapshot()
-    expect(await myFetch('/api', {body: true})).toMatchSnapshot()
-    expect(await myFetch('/api', {body: null})).toMatchSnapshot()
+    expect(
+      await myFetch('/api', {body: new FormData() as any})
+    ).toMatchSnapshot()
+    expect(await myFetch('/api', {body: new Map() as any})).toMatchSnapshot()
+    expect(await myFetch('/api', {body: true as any})).toMatchSnapshot()
+    expect(await myFetch('/api', {body: null as any})).toMatchSnapshot()
   })
 
   it('should work without options', async () => {
@@ -71,7 +77,7 @@ describe('bodify', () => {
       },
     })
     const jsonResult = await myFetch('/api', {
-      body: {},
+      body: {} as any,
       headers: {
         [contentType]: 'application/vnd.org+json',
       },
@@ -89,7 +95,7 @@ describe('bodify', () => {
     ).toEqual(formResult)
     expect(
       await myFetch('/api', {
-        body: {},
+        body: {} as any,
         headers: {
           [contentType.toUpperCase()]: 'application/vnd.org+json',
         },

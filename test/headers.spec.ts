@@ -1,7 +1,9 @@
 import headers from '../src/headers'
 
 describe('headers', () => {
-  const fetch = async (...args) => args
+  const fetch = jest.fn(
+    (async (...args) => args) as unknown as typeof globalThis.fetch
+  )
 
   it('should add headers', async () => {
     const myFetch = headers({'x-version': '1.0'})(fetch)

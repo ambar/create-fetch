@@ -57,7 +57,7 @@ Array [
   "/api",
   Object {
     "headers": Object {
-      "x-versoin": 1,
+      "x-version": "1",
     },
   },
 ]

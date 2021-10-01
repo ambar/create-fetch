@@ -3,6 +3,20 @@ import toObject from './utils/toObject'
 import isPlainObject from './utils/isPlainObject'
 import {FetchEnhancer} from './types'
 
+/* TODO: override body type
+type JSONValue = string | number | boolean | JSONObject | JSONArray
+
+interface JSONObject {
+  [x: string]: JSONValue
+}
+
+interface JSONArray extends Array<JSONValue> {}
+
+type BodifyInit = {
+  body: JSONObject | JSONArray | BodyInit
+}
+*/
+
 /**
  * Stringify body
  */
