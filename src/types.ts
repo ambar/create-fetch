@@ -65,3 +65,15 @@ export type FetchCreate = <
   url: Parameters<F>[0],
   options?: Parameters<F>[1] & SpreadGeneric<FEs>
 ) => FetchReturn
+
+/**
+ * Generic fetch type
+ *
+ * ```
+ * type MyFetch = FetchType<typeof query>
+ * ```
+ */
+export type FetchType<FEs extends readonly FetchEnhancer[]> = (
+  url: Parameters<Fetch>[0],
+  options?: Parameters<Fetch>[1] & SpreadGeneric<FEs>
+) => FetchReturn
