@@ -1,10 +1,10 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`headers should add headers 1`] = `
-Array [
+[
   "/",
-  Object {
-    "headers": Object {
+  {
+    "headers": {
       "x-version": "1.0",
     },
   },
@@ -12,10 +12,10 @@ Array [
 `;
 
 exports[`headers should add headers 2`] = `
-Array [
+[
   "/",
-  Object {
-    "headers": Object {
+  {
+    "headers": {
       "x-version": "1.1",
     },
   },

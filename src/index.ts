@@ -1,4 +1,4 @@
-export * from './types'
+export type * from './types'
 export * from './createFetch'
 export {default} from './createFetch'
 export {default as baseUrl} from './baseUrl'

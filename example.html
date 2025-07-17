@@ -13,7 +13,7 @@
     </pre>
     <pre id="log"></pre>
     <script type="module">
-      import createFetch, {query, bodify, headers} from './dist/index.js'
+      import createFetch, {query, bodify, headers} from './dist/index.mjs'
 
       const myFetch = createFetch(fetch, [
         query(),
@@ -24,6 +24,14 @@
         method: 'POST',
         query: {foo: 'bar'},
         body: new URLSearchParams({lang: '中文'}),
+      }).then(r => {
+        console.info(r)
+        log.textContent = [...r.headers].join('\n')
+      })
+      myFetch('/', {
+        method: 'POST',
+        query: {foo: 'bar'},
+        body: {ok: true},
       }).then(r => {
         console.info(r)
         log.textContent = [...r.headers].join('\n')

@@ -12,17 +12,17 @@ describe('baseUrl', () => {
     const urls = ['/path?foo', 'path?foo']
     await fetchUrls(myFetch, urls)
     expect(fetch.mock.calls).toMatchInlineSnapshot(`
-Array [
-  Array [
-    "https://api.example.com/path?foo",
-    undefined,
-  ],
-  Array [
-    "https://api.example.com/path?foo",
-    undefined,
-  ],
-]
-`)
+      [
+        [
+          "https://api.example.com/path?foo",
+          undefined,
+        ],
+        [
+          "https://api.example.com/path?foo",
+          undefined,
+        ],
+      ]
+    `)
   })
 
   it('should not change non-http urls', async () => {
@@ -30,28 +30,28 @@ Array [
     const urls = ['ws://example.com', 'blob:http://localhost/uuid', 'data:,']
     await fetchUrls(myFetch, urls)
     expect(fetch.mock.calls).toMatchInlineSnapshot(`
-Array [
-  Array [
-    "https://api.example.com/path?foo",
-    undefined,
-  ],
-  Array [
-    "https://api.example.com/path?foo",
-    undefined,
-  ],
-  Array [
-    "ws://example.com/",
-    undefined,
-  ],
-  Array [
-    "blob:http://localhost/uuid",
-    undefined,
-  ],
-  Array [
-    "data:,",
-    undefined,
-  ],
-]
-`)
+      [
+        [
+          "https://api.example.com/path?foo",
+          undefined,
+        ],
+        [
+          "https://api.example.com/path?foo",
+          undefined,
+        ],
+        [
+          "ws://example.com/",
+          undefined,
+        ],
+        [
+          "blob:http://localhost/uuid",
+          undefined,
+        ],
+        [
+          "data:,",
+          undefined,
+        ],
+      ]
+    `)
   })
 })

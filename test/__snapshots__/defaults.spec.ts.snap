@@ -1,10 +1,10 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`defaults should accept Headers 1`] = `
-Array [
+[
   "/",
-  Object {
-    "headers": Object {
+  {
+    "headers": {
       "a": "1, 2",
       "b": "1",
       "c": "1",
@@ -14,10 +14,10 @@ Array [
 `;
 
 exports[`defaults should accept Headers 2`] = `
-Array [
+[
   "/",
-  Object {
-    "headers": Object {
+  {
+    "headers": {
       "a": "1, 2",
       "b": "2",
       "c": "1",
@@ -27,21 +27,21 @@ Array [
 `;
 
 exports[`defaults should add defaults 1`] = `
-Array [
+[
   "/",
-  Object {
+  {
     "credentials": "include",
-    "headers": Object {},
+    "headers": {},
   },
 ]
 `;
 
 exports[`defaults should add defaults and headers 1`] = `
-Array [
+[
   "/",
-  Object {
+  {
     "credentials": "include",
-    "headers": Object {
+    "headers": {
       "content-type": "text/plain",
       "x-version": "1.0",
     },
@@ -50,11 +50,11 @@ Array [
 `;
 
 exports[`defaults should add defaults and headers 2`] = `
-Array [
+[
   "/",
-  Object {
+  {
     "credentials": "omit",
-    "headers": Object {
+    "headers": {
       "content-type": "text/json",
     },
   },
@@ -62,10 +62,10 @@ Array [
 `;
 
 exports[`defaults should filter null or undefined: iterator 1`] = `
-Array [
+[
   "/",
-  Object {
-    "headers": Object {
+  {
+    "headers": {
       "c": "0",
       "d": "false",
       "e": "",
@@ -76,10 +76,10 @@ Array [
 `;
 
 exports[`defaults should filter null or undefined: plain 1`] = `
-Array [
+[
   "/",
-  Object {
-    "headers": Object {
+  {
+    "headers": {
       "c": "0",
       "d": "false",
       "e": "",
@@ -90,10 +90,10 @@ Array [
 `;
 
 exports[`defaults should work without options 1`] = `
-Array [
+[
   "/",
-  Object {
-    "headers": Object {},
+  {
+    "headers": {},
   },
 ]
 `;

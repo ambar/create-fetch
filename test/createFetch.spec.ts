@@ -53,6 +53,6 @@ describe('createFetch', () => {
     const onNext = jest.fn()
     const myFetch = createFetch(fetch, [query(), next(onNext)] as const)
     await myFetch('/api', {method: 'POST', query: {foo: 1}})
-    expect(onNext).toBeCalledWith('/api?foo=1', {method: 'POST'})
+    expect(onNext).toHaveBeenCalledWith('/api?foo=1', {method: 'POST'})
   })
 })

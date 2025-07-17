@@ -6,8 +6,8 @@
   "license": "MIT",
   "sideEffects": false,
   "source": "src/index.ts",
-  "main": "dist/index.cjs.js",
-  "module": "dist/index.esm.js",
+  "main": "dist/index.cjs",
+  "module": "dist/index.mjs",
   "unpkg": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
@@ -22,8 +22,8 @@
   "scripts": {
     "prepare": "npm run test && npm run build",
     "lint": "recommended",
-    "dev": "rollup -c -w",
-    "build": "rollup -c",
+    "dev": "pkgroll -w",
+    "build": "pkgroll --clean-dist",
     "prebuild": "rm -rf dist/**",
     "test": "jest --coverage",
     "test:watch": "jest --watch --notify"
@@ -39,15 +39,18 @@
       "./jest/URLSearchParamsSerializer"
     ]
   },
+  "dependencies": {
+    "type-fest": "^4.41.0"
+  },
   "devDependencies": {
-    "@types/jest": "^27.0.2",
+    "@types/jest": "^30.0.0",
     "cross-fetch": "^3.0.1",
-    "es-jest": "^1.2.0",
-    "jest": "^27.0.6",
+    "es-jest": "^2.1.0",
+    "jest": "^30.0.4",
+    "jest-environment-jsdom": "^30.0.4",
+    "pkgroll": "^2.14.3",
     "recommended": "^0.0.7",
-    "rollup": "^2.55.1",
-    "rollup-plugin-terser": "^7.0.2",
-    "rollup-plugin-typescript2": "^0.30.0",
-    "typescript": "^4.4.3"
-  }
+    "typescript": "^5.8.3"
+  },
+  "packageManager": "yarn@4.9.2"
 }

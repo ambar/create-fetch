@@ -1,11 +1,11 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`bodify should accept Headers 1`] = `
-Array [
+[
   "/api",
-  Object {
+  {
     "body": "{}",
-    "headers": Object {
+    "headers": {
       "a": "1, 2",
       "content-type": "application/json",
     },
@@ -14,11 +14,11 @@ Array [
 `;
 
 exports[`bodify should allow custom content-type 1`] = `
-Array [
+[
   "/api",
-  Object {
+  {
     "body": URLSearchParams: "",
-    "headers": Object {
+    "headers": {
       "content-type": "application/vnd.org+form",
     },
   },
@@ -26,11 +26,11 @@ Array [
 `;
 
 exports[`bodify should allow custom content-type 2`] = `
-Array [
+[
   "/api",
-  Object {
+  {
     "body": "{}",
-    "headers": Object {
+    "headers": {
       "content-type": "application/vnd.org+json",
     },
   },
@@ -38,61 +38,61 @@ Array [
 `;
 
 exports[`bodify should not stringify with non-plain-object or non-array 1`] = `
-Array [
+[
   "/api",
-  Object {
+  {
     "body": Foo {},
-    "headers": Object {},
+    "headers": {},
   },
 ]
 `;
 
 exports[`bodify should not stringify with non-plain-object or non-array 2`] = `
-Array [
+[
   "/api",
-  Object {
+  {
     "body": FormData {},
-    "headers": Object {},
+    "headers": {},
   },
 ]
 `;
 
 exports[`bodify should not stringify with non-plain-object or non-array 3`] = `
-Array [
+[
   "/api",
-  Object {
+  {
     "body": Map {},
-    "headers": Object {},
+    "headers": {},
   },
 ]
 `;
 
 exports[`bodify should not stringify with non-plain-object or non-array 4`] = `
-Array [
+[
   "/api",
-  Object {
+  {
     "body": true,
-    "headers": Object {},
+    "headers": {},
   },
 ]
 `;
 
 exports[`bodify should not stringify with non-plain-object or non-array 5`] = `
-Array [
+[
   "/api",
-  Object {
+  {
     "body": null,
-    "headers": Object {},
+    "headers": {},
   },
 ]
 `;
 
 exports[`bodify should stringify form 1`] = `
-Array [
+[
   "/api",
-  Object {
+  {
     "body": URLSearchParams: "username=Jo+Jo&lang=%E4%B8%AD%E6%96%87&age=undefined",
-    "headers": Object {
+    "headers": {
       "content-type": "application/x-www-form-urlencoded;charset=UTF-8",
     },
   },
@@ -100,11 +100,11 @@ Array [
 `;
 
 exports[`bodify should stringify form 2`] = `
-Array [
+[
   "/api",
-  Object {
+  {
     "body": URLSearchParams: "1=2&3=4",
-    "headers": Object {
+    "headers": {
       "content-type": "application/x-www-form-urlencoded;charset=UTF-8",
     },
   },
@@ -112,11 +112,11 @@ Array [
 `;
 
 exports[`bodify should stringify json 1`] = `
-Array [
+[
   "/api",
-  Object {
-    "body": "{\\"username\\":\\"Jo Jo\\",\\"lang\\":\\"中文\\"}",
-    "headers": Object {
+  {
+    "body": "{"username":"Jo Jo","lang":"中文"}",
+    "headers": {
       "content-type": "application/json",
     },
   },
@@ -124,11 +124,11 @@ Array [
 `;
 
 exports[`bodify should stringify json 2`] = `
-Array [
+[
   "/api",
-  Object {
+  {
     "body": "[[1,2],[3,4]]",
-    "headers": Object {
+    "headers": {
       "content-type": "application/json",
     },
   },
@@ -136,11 +136,11 @@ Array [
 `;
 
 exports[`bodify should stringify json 3`] = `
-Array [
+[
   "/api",
-  Object {
+  {
     "body": "{}",
-    "headers": Object {
+    "headers": {
       "content-type": "application/json",
     },
   },
@@ -148,11 +148,11 @@ Array [
 `;
 
 exports[`bodify should stringify json 4`] = `
-Array [
+[
   "/api",
-  Object {
+  {
     "body": "{}",
-    "headers": Object {
+    "headers": {
       "content-type": "application/json",
     },
   },
@@ -160,21 +160,21 @@ Array [
 `;
 
 exports[`bodify should stringify json 5`] = `
-Array [
+[
   "/api",
-  Object {
-    "body": Object {},
-    "headers": Object {},
+  {
+    "body": {},
+    "headers": {},
   },
 ]
 `;
 
 exports[`bodify should work without options 1`] = `
-Array [
+[
   "/api",
-  Object {
+  {
     "body": undefined,
-    "headers": Object {},
+    "headers": {},
   },
 ]
 `;
