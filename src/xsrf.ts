@@ -27,7 +27,7 @@ const xsrf =
 
     return fetch(url, {
       ...options,
-      headers: toObject(headers),
+      headers: toObject(headers) as HeadersInit,
     })
   }
 

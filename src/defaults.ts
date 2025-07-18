@@ -12,5 +12,5 @@ export default (defaults: RequestInit = {}): FetchEnhancer =>
         // same-key values will be deduped
         ...toHeaders(defaults.headers),
         ...toHeaders(options.headers),
-      ]),
+      ]) as HeadersInit,
     })

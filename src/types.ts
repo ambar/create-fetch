@@ -27,14 +27,22 @@ export type FetchReturn = ReturnType<Fetch>
 // eslint-disable-next-line @typescript-eslint/ban-types
 export type FetchEnhancer<Extra = {}> = <F extends Fetch>(
   fetch: F
-) => (url: Parameters<F>[0], options?: Parameters<F>[1] & Extra) => FetchReturn
+) => (
+  url: Parameters<F>[0],
+  options?: Override<RequestInit, Extra>
+) => FetchReturn
+
+type Override<T, U> = U extends undefined
+  ? NonNullable<T>
+  : Omit<NonNullable<T>, keyof U> & U
 
 type ExtractGeneric<T> = T extends FetchEnhancer<infer X> ? X : never
+
 type SpreadGeneric<T extends readonly [...any]> = T extends readonly [
   infer L,
   ...infer R
 ]
-  ? ExtractGeneric<L> & SpreadGeneric<R>
+  ? Override<ExtractGeneric<L>, SpreadGeneric<R>>
   : unknown
 
 /**
@@ -52,7 +60,7 @@ export type FetchCompose = <FEs extends FetchEnhancer[]>(
   fetch: F
 ) => (
   url: Parameters<F>[0],
-  options?: Parameters<F>[1] & SpreadGeneric<FEs>
+  options?: Override<Parameters<F>[1], SpreadGeneric<FEs>>
 ) => FetchReturn
 
 export type FetchCreate = <
@@ -63,7 +71,7 @@ export type FetchCreate = <
   args: FEs
 ) => (
   url: Parameters<F>[0],
-  options?: Parameters<F>[1] & SpreadGeneric<FEs>
+  options?: Override<Parameters<F>[1], SpreadGeneric<FEs>>
 ) => FetchReturn
 
 /**
@@ -75,5 +83,5 @@ export type FetchCreate = <
  */
 export type FetchType<FEs extends readonly FetchEnhancer[]> = (
   url: Parameters<Fetch>[0],
-  options?: Parameters<Fetch>[1] & SpreadGeneric<FEs>
+  options?: Override<Parameters<Fetch>[1], SpreadGeneric<FEs>>
 ) => FetchReturn

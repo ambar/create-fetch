@@ -27,7 +27,7 @@ describe('createFetch', () => {
     expect(await myFetch('/api', {query: {filter: 'name'}})).toMatchSnapshot()
     // json
     expect(
-      await myFetch('/api', {method: 'POST', body: {name: 'JoJo'} as any})
+      await myFetch('/api', {method: 'POST', body: {name: 'JoJo'}})
     ).toMatchSnapshot()
     // form
     expect(
