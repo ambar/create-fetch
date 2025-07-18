@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.3.1](https://github.com/ambar/create-fetch/compare/v3.3.0...v3.3.1) (2025-07-18)
+
+
+### Bug Fixes
+
+* set body type to BodyInit | JsonObject | JsonArray ([457aeb2](https://github.com/ambar/create-fetch/commit/457aeb2a4d3a5cc866d6ee212bfed2b4953721c2))
+
 ## [3.3.0](https://github.com/ambar/create-fetch/compare/v3.2.1...v3.3.0) (2021-12-28)
 
 
